@@ -1,0 +1,14 @@
+rules_version = '2';
+
+// 챌린지 보드 보안 규칙: 보드 주인 계정만 자기 기록을 읽고 쓸 수 있다.
+// OWNER_UID를 앱의 "UID 복사"로 얻은 내 UID로 바꾼 뒤
+// Firebase 콘솔 → Firestore Database → 규칙 탭에 붙여넣고 [게시]한다.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid}/{document=**} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == uid
+                         && uid == "OWNER_UID";
+    }
+  }
+}

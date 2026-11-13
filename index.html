@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>챌린지 보드</title>
+  <meta name="description" content="취업 준비 챌린지 보드: 매일 운동·공부·건강·취업활동을 기록하고 XP·레벨·배지로 게임처럼 관리해요.">
+  <meta name="theme-color" content="#10142a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // 저장해 둔 테마를 화면이 그려지기 전에 적용해서 깜빡임을 막는다.
+    try { const t = localStorage.getItem('cb-theme'); if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <div id="gate" class="gate">
+    <div class="gate-card">
+      <p class="kicker">QUEST LOG</p>
+      <h1 class="gate-title">챌린지 보드</h1>
+      <p class="gate-sub">불러오는 중이에요…</p>
+    </div>
+  </div>
+
+  <div id="app" class="app" hidden>
+    <header id="hud" class="hud"></header>
+    <div id="banner"></div>
+    <main id="view" class="view" tabindex="-1"></main>
+    <nav id="tabs" class="tabs" aria-label="화면 이동">
+      <button type="button" data-tab="today"><span aria-hidden="true">⚔️</span>오늘</button>
+      <button type="button" data-tab="calendar"><span aria-hidden="true">🗓️</span>달력</button>
+      <button type="button" data-tab="missions"><span aria-hidden="true">📜</span>미션</button>
+      <button type="button" data-tab="badges"><span aria-hidden="true">🏅</span>배지</button>
+      <button type="button" data-tab="season"><span aria-hidden="true">🏁</span>시즌</button>
+    </nav>
+  </div>
+
+  <div id="fx" class="fx" aria-live="polite"></div>
+
+  <noscript>챌린지 보드는 JavaScript가 켜져 있어야 동작해요.</noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
